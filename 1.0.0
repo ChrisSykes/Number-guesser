@@ -1,0 +1,113 @@
+using System;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            GetAppInfo; // Run GetAppifno function
+
+           
+
+            while (true)
+            {
+
+                // Set Init corret number 
+                //int correctNumber = 7;
+
+                // Create a new Random object 
+                Random random = new Random();
+                int correctNumber = random.Next(1, 10);
+
+                // Init questt var
+                int quess = 0;
+
+
+                // Ask user for number 
+                Console.WriteLine("Guess a number between 1 and 10");
+
+                // While quess is not correct
+                while (quess != correctNumber)
+                {
+                    // Get user input
+                    string inputNumber = Console.ReadLine();
+
+                    // Make Sure is number
+                    if (!int.TryParse(inputNumber, out quess))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Please enter an actual number");
+                        Console.ResetColor();
+
+                        // Keep Going 
+                        continue;
+
+                    }
+
+                    // Cast to int and put in quess 
+                    quess = Int32.Parse(inputNumber);
+
+                    // Match quess to correct number
+                    if (quess != correctNumber)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Wrong Number, please try again");
+                        Console.ResetColor();
+
+                    }
+
+                }
+
+                // Output massage
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("You're Correct!");
+                Console.ResetColor();
+
+                // Aks to play again 
+                Console.WriteLine("Play again? [Y] or [N]");
+
+                //Get Answer
+                string answer = Console.ReadLine().ToUpper();
+
+                if (answer == "Y"){
+                    continue;
+                    
+                }
+
+                else if (answer == "N"){
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+
+
+           
+            }
+        }
+
+        static void GetAppInfo()
+        {
+            string appName = "Number Guesser";
+            string appVersion = "1.0.0";
+            string appAuthor = "Chris Sykes";
+
+            //change text color 
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            //Write app info in console 
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
+            Console.ResetColor();
+
+            //Ask user name
+            Console.WriteLine("What is you name: ");
+
+            // Get user input
+            String inputName = Console.ReadLine();
+            Console.WriteLine("Hello {0}, let's play a game...", inputName);
+        }
+    }
+}
