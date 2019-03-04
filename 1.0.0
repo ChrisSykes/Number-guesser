@@ -7,9 +7,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            GetAppInfo(); // Run GetAppifno function
-
-           
+            // Run GetAppifno function
+            GetAppInfo();            
 
             while (true)
             {
@@ -24,7 +23,6 @@ namespace ConsoleApp1
                 // Init questt var
                 int quess = 0;
 
-
                 // Ask user for number 
                 Console.WriteLine("Guess a number between 1 and 10");
 
@@ -37,13 +35,12 @@ namespace ConsoleApp1
                     // Make Sure is number
                     if (!int.TryParse(inputNumber, out quess))
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Please enter an actual number");
-                        Console.ResetColor();
+
+                        // Print Color Message in Console 
+                        PrintColorMessage(ConsoleColor.Red, "Please use an actual number"); 
 
                         // Keep Going 
                         continue;
-
                     }
 
                     // Cast to int and put in quess 
@@ -52,18 +49,13 @@ namespace ConsoleApp1
                     // Match quess to correct number
                     if (quess != correctNumber)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Wrong Number, please try again");
-                        Console.ResetColor();
-
+                        PrintColorMessage(ConsoleColor.Red, "Wrong Number, please try again");
                     }
 
                 }
 
                 // Output massage
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("You're Correct!");
-                Console.ResetColor();
+                        PrintColorMessage(ConsoleColor.Green, "You're Correct!");
 
                 // Aks to play again 
                 Console.WriteLine("Play again? [Y] or [N]");
@@ -72,8 +64,7 @@ namespace ConsoleApp1
                 string answer = Console.ReadLine().ToUpper();
 
                 if (answer == "Y"){
-                    continue;
-                    
+                    continue;                    
                 }
 
                 else if (answer == "N"){
@@ -82,10 +73,7 @@ namespace ConsoleApp1
                 else
                 {
                     return;
-                }
-
-
-           
+                }           
             }
         }
 
@@ -109,5 +97,17 @@ namespace ConsoleApp1
             String inputName = Console.ReadLine();
             Console.WriteLine("Hello {0}, let's play a game...", inputName);
         }
+
+        // Print color and message 
+
+        static void PrintColorMessage(ConsoleColor color, string message)
+        {
+
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
     }
+
+           
 }
