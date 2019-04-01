@@ -12,10 +12,7 @@ namespace ConsoleApp1
 
             while (true)
             {
-
-                // Set Init corret number 
-                //int correctNumber = 7;
-
+               
                 // Create a new Random object 
                 Random random = new Random();
                 int correctNumber = random.Next(1, 10);
